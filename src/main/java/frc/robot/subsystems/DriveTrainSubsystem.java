@@ -12,26 +12,23 @@ import frc.robot.RobotMap;
 import frc.robot.commands.DriveCommand;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
-
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.command.Subsystem;
 
 
 /**
  * Add your docs here.
  */
 public class DriveTrainSubsystem extends Subsystem {
-  Victor left1 = new Victor(RobotMap.VICTOR_LEFT1);
-	Victor left2 = new Victor(RobotMap.VICTOR_LEFT2);
-	Talon right1 = new Talon(RobotMap.TALON_RIGHT1);
-	Talon right2 = new Talon(RobotMap.TALON_RIGHT2);
+  private Victor left1 = new Victor(RobotMap.VICTOR_LEFT1);
+	private Victor left2 = new Victor(RobotMap.VICTOR_LEFT2);
+	private Talon right1 = new Talon(RobotMap.TALON_RIGHT1);
+	private Talon right2 = new Talon(RobotMap.TALON_RIGHT2);
 
 	//groups both motors as one drive, both motors required for movement
-	public SpeedControllerGroup leftSideDrive = new SpeedControllerGroup(left1, left2);
-	public SpeedControllerGroup rightSideDrive = new SpeedControllerGroup(right1, right2);
+	private SpeedControllerGroup leftSideDrive = new SpeedControllerGroup(left1, left2);
+	private SpeedControllerGroup rightSideDrive = new SpeedControllerGroup(right1, right2);
   public DifferentialDrive drive = new DifferentialDrive(leftSideDrive, rightSideDrive);
 
   public double speed = 0.0;
