@@ -13,6 +13,7 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.SeekingCommand;
 /**
  * Add your docs here.
  */
@@ -41,13 +42,11 @@ public class CameraDataSubsystem extends Subsystem {
 
 
     // Gets camera modes and pipelines from Limelight
-  NetworkTableEntry ledMode = table.getEntry("ledMode");
-	NetworkTableEntry camMode = table.getEntry("camMode");
-	NetworkTableEntry pipeline = table.getEntry("pipeline");
+    NetworkTableEntry ledMode = table.getEntry("ledMode");
+	  NetworkTableEntry camMode = table.getEntry("camMode");
+	  NetworkTableEntry pipeline = table.getEntry("pipeline");
 
-    public void setCameraMode(int mode, int pipelineNum) {
-        ledMode.setNumber(0);
-        camMode.setNumber(mode); 
+    public void setCameraMode(int pipelineNum) {
         pipeline.setNumber(pipelineNum);   
     }
 
@@ -63,6 +62,6 @@ public class CameraDataSubsystem extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new SeekingCommand());
   }
 }

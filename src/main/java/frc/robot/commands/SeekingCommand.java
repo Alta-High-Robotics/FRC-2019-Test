@@ -31,19 +31,22 @@ public class SeekingCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.cameraDataSubsystem.setCameraMode(1);
     System.out.println("Running Seeking Command");
     var data = Robot.cameraDataSubsystem.getCameraData();
     if(data.targetExists == 0.0) {
       Robot.driveTrainSubsystem.drive.curvatureDrive(0.0, 0.5, true);
     } else {
-      Robot.driveTrainSubsystem.drive.curvatureDrive(-0.5, 0.0, false);
+      // Positive is turn left, negative is turn right
+      double turnToTargetRate = 0.02 * (-1.0 * Robot.cameraDataSubsystem.getCameraData().xOffset);
+      Robot.driveTrainSubsystem.drive.curvatureDrive(-0.5, turnToTargetRate, false);
     }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.cameraDataSubsystem.getCameraData().area >= 1.0;
+    return Robot.cameraDataSubsystem.getCameraData().area >= 5.0;
   }
 
   // Called once after isFinished returns true
