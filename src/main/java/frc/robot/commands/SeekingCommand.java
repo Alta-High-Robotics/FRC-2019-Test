@@ -40,7 +40,8 @@ public class SeekingCommand extends Command {
     } else {
       // Positive is turn left, negative is turn right
       double turnToTargetRate = 0.02 * (-1.0 * Robot.cameraDataSubsystem.getCameraData().xOffset);
-      Robot.driveTrainSubsystem.drive.curvatureDrive(-0.5, turnToTargetRate, false);
+      double speed = -0.5 + (0.037 * Robot.cameraDataSubsystem.getCameraData().area);
+      Robot.driveTrainSubsystem.drive.curvatureDrive(speed, turnToTargetRate, false);
     }
   }
 
