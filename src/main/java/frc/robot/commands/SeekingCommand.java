@@ -26,12 +26,13 @@ public class SeekingCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.cameraDataSubsystem.setTrackingMode();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.cameraDataSubsystem.setCameraMode(1);
+    
     System.out.println("Running Seeking Command");
     var data = Robot.cameraDataSubsystem.getCameraData();
     if(data.targetExists == 0.0) {
@@ -46,17 +47,13 @@ public class SeekingCommand extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.cameraDataSubsystem.getCameraData().area >= 5.0;
+    return Robot.cameraDataSubsystem.getCameraData().area >= 5.5;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-  }
-
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
+    System.out.println("This command is over");
+    Robot.cameraDataSubsystem.setDriveCamMode();
   }
 }

@@ -8,6 +8,9 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.Button;
+import frc.robot.commands.SeekingCommand;
+import frc.robot.controller.XboxButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -17,7 +20,15 @@ public class OI {
   int port = RobotMap.XBOX_PORT;
   XboxController controller = new XboxController(port);
 
+  public OI() {
+    Button seekTarget = new XboxButton(controller, XboxButton.Button.X);
+
+    seekTarget.toggleWhenPressed(new SeekingCommand());
+	}
+
   public XboxController getController() {
 		return controller;
   }
+  
+  
 }

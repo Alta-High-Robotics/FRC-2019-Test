@@ -46,8 +46,16 @@ public class CameraDataSubsystem extends Subsystem {
 	  NetworkTableEntry camMode = table.getEntry("camMode");
 	  NetworkTableEntry pipeline = table.getEntry("pipeline");
 
-    public void setCameraMode(int pipelineNum) {
-        pipeline.setNumber(pipelineNum);   
+    public void setTrackingMode() {
+        pipeline.setNumber(1);
+        camMode.setNumber(0);
+        ledMode.setNumber(3);
+    }
+
+    public void setDriveCamMode() {
+        pipeline.setNumber(0);
+        camMode.setNumber(1);
+        ledMode.setNumber(1);
     }
 
     public CameraData getCameraData() {
