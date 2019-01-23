@@ -25,7 +25,8 @@ public class DriveCommand extends Command {
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {
+  protected void execute() {;
+
     Robot.driveTrainSubsystem.speed = Robot.oi.getController().getRawAxis(RobotMap.DRIVE_STICK_Y_AXIS);
     Robot.driveTrainSubsystem.rotation = -1.0 * Robot.oi.getController().getRawAxis(RobotMap.DRIVE_STICK_X_AXIS);
     // Robot.driveTrainSubsystem.arcadeDrive();

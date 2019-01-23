@@ -27,7 +27,6 @@ import frc.robot.subsystems.DriveTrainSubsystem;
 public class Robot extends TimedRobot {
   public static OI oi;
   public static DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
-
   public static CameraDataSubsystem cameraDataSubsystem = new CameraDataSubsystem();
 
   Command m_autonomousCommand;
