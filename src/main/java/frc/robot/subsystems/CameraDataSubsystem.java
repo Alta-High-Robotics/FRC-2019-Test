@@ -32,19 +32,21 @@ public class CameraDataSubsystem extends Subsystem {
       }
     }
 
-    NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
-    NetworkTableEntry tx = table.getEntry("tx"); // X offset of target
-    NetworkTableEntry ty = table.getEntry("ty"); // Y offset of target
-    NetworkTableEntry tv = table.getEntry("tv");
-    NetworkTableEntry ta = table.getEntry("ta"); // Area of target in image (0-100)
-    NetworkTableEntry ts = table.getEntry("ts"); // Skew or rotation of target
-    NetworkTableEntry tl = table.getEntry("tl"); // Camera latency data
+    private NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+    private NetworkTableEntry tx = table.getEntry("tx"); // X offset of target
+    private NetworkTableEntry ty = table.getEntry("ty"); // Y offset of target
+    private NetworkTableEntry tv = table.getEntry("tv");
+    private NetworkTableEntry ta = table.getEntry("ta"); // Area of target in image (0-100)
+    private NetworkTableEntry ts = table.getEntry("ts"); // Skew or rotation of target
+    private NetworkTableEntry tl = table.getEntry("tl"); // Camera latency data
 
 
     // Gets camera modes and pipelines from Limelight
-    NetworkTableEntry ledMode = table.getEntry("ledMode");
-	  NetworkTableEntry camMode = table.getEntry("camMode");
-	  NetworkTableEntry pipeline = table.getEntry("pipeline");
+    private NetworkTableEntry ledMode = table.getEntry("ledMode");
+	  private NetworkTableEntry camMode = table.getEntry("camMode");
+    private NetworkTableEntry pipeline = table.getEntry("pipeline");
+    
+    
 
     public void setTrackingMode() {
         pipeline.setNumber(1);

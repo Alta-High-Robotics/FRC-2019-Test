@@ -43,13 +43,17 @@ public class SeekingCommand extends Command {
       double headingError = -1.0 * xOffset;
       double turnToTargetRate = 0;
 
+      double speedConstant = -0.8;
+
       if(xOffset > 1.0) {
         turnToTargetRate = turnConstant * headingError - minCommand;
       } else if(xOffset < 1.0) {
         turnToTargetRate = turnConstant * headingError + minCommand;
       }
 
-      double speed = -0.5 + (0.037 * Robot.cameraDataSubsystem.getCameraData().area);
+      double speed = speedConstant + (0.105 * Robot.cameraDataSubsystem.getCameraData().area);
+
+      
       Robot.driveTrainSubsystem.drive.curvatureDrive(speed, turnToTargetRate, false);
     }
   }
@@ -57,7 +61,7 @@ public class SeekingCommand extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.cameraDataSubsystem.getCameraData().area >= 18.0;
+    return Robot.cameraDataSubsystem.getCameraData().area >= 16.0;
   }
 
   // Called once after isFinished returns true
@@ -66,6 +70,6 @@ public class SeekingCommand extends Command {
     // while(Robot.cameraDataSubsystem.getCameraData().area >= 1.0) {
     //   Robot.driveTrainSubsystem.drive.curvatureDrive(0.4, 0.0, false);
     // }
-    // Robot.cameraDataSubsystem.setDriveCamMode();
+    Robot.cameraDataSubsystem.setDriveCamMode();
   }
 }
